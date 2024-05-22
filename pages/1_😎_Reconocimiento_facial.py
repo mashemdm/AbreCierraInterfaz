@@ -74,6 +74,8 @@ if img_file_buffer is not None:
             st.write(f"{output_text}")
             client1.publish("CanalAbreCierra", "{'gesto': 'Triste'}", qos=0, retain=False)
             time.sleep(0.2)
+    except BrokenPipeError as bpe:
+        st.error(f"A broken pipe error occurred during model prediction: {bpe}")
     except Exception as e:
         st.error(f"An error occurred during model prediction: {e}")
 
