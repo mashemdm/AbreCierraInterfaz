@@ -33,7 +33,7 @@ data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
 #Mi codigo
 st.set_page_config(page_title="Reconocimiento facial", page_icon="😎")
-st.markdown("# Reconocimiento facial")
+#st.markdown("# Reconocimiento facial")
 st.sidebar.header("Reconocimiento facial")
 
 img_file_buffer = st.camera_input("Toma una Foto")
