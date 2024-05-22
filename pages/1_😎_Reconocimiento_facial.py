@@ -8,6 +8,12 @@ import numpy as np
 from PIL import Image as Image, ImageOps as ImagOps
 from keras.models import load_model
 #from keras.saving import load_model
+import os
+
+if os.path.exists('keras_model.h5'):
+    print("The file 'keras_model.h5' exists in the current working directory.")
+else:
+    print("The file 'keras_model.h5' does not exist in the current working directory.")
 
 def on_publish(client,userdata,result):             #create function for callback
     print("el dato ha sido publicado \n")
