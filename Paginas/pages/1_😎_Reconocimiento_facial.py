@@ -36,11 +36,6 @@ st.set_page_config(page_title="Reconocimiento facial", page_icon="😎")
 st.markdown("# Reconocimiento facial")
 st.sidebar.header("Reconocimiento facial")
 
-progress_bar = st.sidebar.progress(0)
-status_text = st.sidebar.empty()
-
-st.title("Lector de emociones")
-
 img_file_buffer = st.camera_input("Toma una Foto")
 
 if img_file_buffer is not None:
