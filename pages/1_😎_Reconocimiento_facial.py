@@ -7,6 +7,7 @@ import numpy as np
 from PIL import Image as Image, ImageOps as ImagOps
 from keras.models import load_model
 from gtts import gTTS
+import os
 import playsound
 
 # Configuración de la página
@@ -44,7 +45,12 @@ def play_audio(text):
     except Exception as e:
         print("Error al reproducir el audio:", e)
     finally:
-        os.remove("temp_audio.mp3")
+        # Verificar si el archivo existe antes de intentar eliminarlo
+        if os.path.exists("temp_audio.mp3"):
+            try:
+                os.remove("temp_audio.mp3")
+            except Exception as e:
+                print("Error al eliminar el archivo de audio:", e)
 
 if img_file_buffer is not None:
     # Leer la imagen del buffer
