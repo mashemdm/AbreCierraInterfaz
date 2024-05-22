@@ -38,9 +38,6 @@ st.sidebar.header("Reconocimiento facial")
 
 progress_bar = st.sidebar.progress(0)
 status_text = st.sidebar.empty()
-last_rows = np.random.randn(1, 1)
-chart = st.line_chart(last_rows)
-
 
 st.title("Lector de emociones")
 
