@@ -26,7 +26,11 @@ port=1883
 client1= paho.Client("APPVOZ")
 client1.on_message = on_message
 
+#Mi codigo
+st.set_page_config(page_title="Reconocimiento de voz", page_icon="🎙")
 
+st.markdown("# Reconocimiento de voz")
+st.sidebar.header("Reconocimiento de voz")
 
 st.title("Interfaces Multimodales")
 st.subheader("CONTROL POR VOZ")
