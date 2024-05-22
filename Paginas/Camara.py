@@ -31,6 +31,16 @@ client1.connect(broker,port)
 model = load_model('keras_model.h5')
 data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
+#Mi codigo
+st.set_page_config(page_title="Reconocimiento facial", page_icon="😎")
+st.markdown("# Reconocimiento facial")
+st.sidebar.header("Reconocimiento facial")
+
+progress_bar = st.sidebar.progress(0)
+status_text = st.sidebar.empty()
+last_rows = np.random.randn(1, 1)
+chart = st.line_chart(last_rows)
+
 st.title("Lector de emociones")
 
 img_file_buffer = st.camera_input("Toma una Foto")
