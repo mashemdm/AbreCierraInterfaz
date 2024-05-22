@@ -6,18 +6,14 @@ import cv2
 import numpy as np
 from PIL import Image as Image, ImageOps as ImagOps
 from keras.models import load_model
-
-# Para que hable
 from gtts import gTTS
-import os
-#import playsound
 import playsound
 
 # Configuración de la página
 st.set_page_config(page_title="Reconocimiento facial", page_icon="😎")
 st.markdown("# Reconocimiento facial")
 
-def on_publish(client, userdata, result):  # create function for callback
+def on_publish(client, userdata, result):  
     print("El dato ha sido publicado\n")
     pass
 
@@ -43,8 +39,12 @@ img_file_buffer = st.camera_input("Toma una Foto")
 def play_audio(text):
     tts = gTTS(text=text, lang='es')
     tts.save("temp_audio.mp3")
-    playsound.playsound("temp_audio.mp3")
-    os.remove("temp_audio.mp3")
+    try:
+        playsound.playsound("temp_audio.mp3")
+    except Exception as e:
+        print("Error al reproducir el audio:", e)
+    finally:
+        os.remove("temp_audio.mp3")
 
 if img_file_buffer is not None:
     # Leer la imagen del buffer
