@@ -23,7 +23,6 @@ bokeh==2.4.3
 Streamlit-bokeh-events
 
 playsound
-pyaudio
-pydub
+
 
 
