@@ -21,6 +21,12 @@ else:
 st.set_page_config(page_title="Reconocimiento facial", page_icon="😎")
 st.markdown("# Reconocimiento facial")
 
+#Lo del audio
+try:
+    os.mkdir("temp")
+except:
+    pass
+
 def on_publish(client,userdata,result):             #create function for callback
     print("el dato ha sido publicado \n")
     pass
