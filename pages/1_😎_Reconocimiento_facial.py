@@ -28,7 +28,7 @@ client1.on_message = on_message
 client1.on_publish = on_publish
 client1.connect(broker,port)
 
-model = load_model('keras_model.h5')
+model = load_model("keras_model.h5")
 data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
 st.title("Cerradura Inteligente")
