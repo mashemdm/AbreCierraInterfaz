@@ -15,6 +15,10 @@ if os.path.exists('keras_model.h5'):
 else:
     print("The file 'keras_model.h5' does not exist in the current working directory.")
 
+#Mi codigo
+st.set_page_config(page_title="Reconocimiento facial", page_icon="😎")
+st.markdown("# Reconocimiento facial")
+
 def on_publish(client,userdata,result):             #create function for callback
     print("el dato ha sido publicado \n")
     pass
@@ -41,9 +45,7 @@ data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
 st.title("Cerradura Inteligente")
 
-#Mi codigo
-st.set_page_config(page_title="Reconocimiento facial", page_icon="😎")
-st.markdown("# Reconocimiento facial")
+
 
 img_file_buffer = st.camera_input("Toma una Foto")
 
