@@ -11,7 +11,7 @@ from keras.models import load_model
 from gtts import gTTS
 import os
 #import playsound
-from playsound import playsound
+import playsound
 
 # Configuración de la página
 st.set_page_config(page_title="Reconocimiento facial", page_icon="😎")
