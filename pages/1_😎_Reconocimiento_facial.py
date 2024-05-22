@@ -8,7 +8,8 @@ from PIL import Image as Image, ImageOps as ImagOps
 from keras.models import load_model
 from gtts import gTTS
 import os
-import playsound
+from pydub import AudioSegment
+from pydub.playback import play
 
 # Configuración de la página
 st.set_page_config(page_title="Reconocimiento facial", page_icon="😎")
@@ -41,7 +42,8 @@ def play_audio(text):
     tts = gTTS(text=text, lang='es')
     tts.save("temp_audio.mp3")
     try:
-        playsound.playsound("temp_audio.mp3")
+        audio = AudioSegment.from_mp3("temp_audio.mp3")
+        play(audio)
     except Exception as e:
         print("Error al reproducir el audio:", e)
     finally:
