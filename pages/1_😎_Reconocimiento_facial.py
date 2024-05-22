@@ -14,6 +14,11 @@ import playsound
 st.set_page_config(page_title="Reconocimiento facial", page_icon="😎")
 st.markdown("# Reconocimiento facial")
 
+try:
+    os.mkdir("temp")
+except:
+    pass
+
 def on_publish(client, userdata, result):  
     print("El dato ha sido publicado\n")
     pass
