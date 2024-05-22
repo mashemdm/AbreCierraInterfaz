@@ -8,6 +8,8 @@ import numpy as np
 from PIL import Image as Image, ImageOps as ImagOps
 from keras.models import load_model
 import os
+import time
+import glob
 
 #Para que hable
 from gtts import gTTS
