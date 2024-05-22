@@ -6,7 +6,8 @@ import cv2
 import numpy as np
 #from PIL import Image
 from PIL import Image as Image, ImageOps as ImagOps
-from keras.models import load_model
+#from keras.models import load_model
+from keras.saving import load_model
 
 def on_publish(client,userdata,result):             #create function for callback
     print("el dato ha sido publicado \n")
@@ -28,7 +29,8 @@ client1.on_message = on_message
 client1.on_publish = on_publish
 client1.connect(broker,port)
 
-model = load_model("keras_model.h5")
+#model = load_model("keras_model.h5")
+model = load_model('keras_model.h5')
 data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
 st.title("Cerradura Inteligente")
