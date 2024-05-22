@@ -116,9 +116,7 @@ def text_to_speech(text, tld):
     st.markdown(f"## Tú audio:")
     st.audio(audio_bytes, format="audio/mp3", start_time=0)"""
 
-    #if display_output_text:
-    """st.markdown(f"## Texto en audio:")
-    st.write(f" {output_text}")"""
+  
 
 
 def remove_files(n):
