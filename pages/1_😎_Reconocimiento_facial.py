@@ -56,23 +56,26 @@ if img_file_buffer is not None:
     normalized_image_array = (img_array.astype(np.float32) / 127.0) - 1
     data[0] = normalized_image_array
 
-    prediction = model.predict(data)
-    print(prediction)
-    if prediction[0][0] > 0.3:
-        st.header('Te veo feliz 😁')
-        client1.publish("CanalAbreCierra", "{'gesto': 'Feliz'}", qos=0, retain=False)
-        time.sleep(0.2)
-    if prediction[0][1] > 0.3:
-        st.header('Te veo triste ☹️')
-        result, output_text = text_to_speech("Te veo triste", "es")
-        audio_file = open(f"temp/{result}.mp3", "rb")
-        audio_bytes = audio_file.read()
-        st.markdown(f"## Tú audio:")
-        st.audio(audio_bytes, format="audio/mp3", start_time=0)
-        st.markdown(f"## Texto en audio:")
-        st.write(f"{output_text}")
-        client1.publish("CanalAbreCierra", "{'gesto': 'Triste'}", qos=0, retain=False)
-        time.sleep(0.2)
+    try:
+        prediction = model.predict(data)
+        print(prediction)
+        if prediction[0][0] > 0.3:
+            st.header('Te veo feliz 😁')
+            client1.publish("CanalAbreCierra", "{'gesto': 'Feliz'}", qos=0, retain=False)
+            time.sleep(0.2)
+        if prediction[0][1] > 0.3:
+            st.header('Te veo triste ☹️')
+            result, output_text = text_to_speech("Te veo triste", "es")
+            audio_file = open(f"temp/{result}.mp3", "rb")
+            audio_bytes = audio_file.read()
+            st.markdown(f"## Tú audio:")
+            st.audio(audio_bytes, format="audio/mp3", start_time=0)
+            st.markdown(f"## Texto en audio:")
+            st.write(f"{output_text}")
+            client1.publish("CanalAbreCierra", "{'gesto': 'Triste'}", qos=0, retain=False)
+            time.sleep(0.2)
+    except Exception as e:
+        st.error(f"An error occurred during model prediction: {e}")
 
 text = "Me encanta verte feliz, cómo puedo ayudarte"
 tld = "es"
