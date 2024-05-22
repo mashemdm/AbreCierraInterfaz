@@ -92,7 +92,8 @@ def text_to_speech(text, tld):
         my_file_name = "audio"
     tts.save(f"temp/{my_file_name}.mp3")
     return my_file_name, text
-    if st.button("convertir"):
+    
+if st.button("convertir"):
     result, output_text = text_to_speech(text, tld)
     audio_file = open(f"temp/{result}.mp3", "rb")
     audio_bytes = audio_file.read()
