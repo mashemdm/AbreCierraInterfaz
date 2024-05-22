@@ -4,71 +4,69 @@ import json
 import streamlit as st
 import cv2
 import numpy as np
-#from PIL import Image
 from PIL import Image as Image, ImageOps as ImagOps
 from keras.models import load_model
 
-#Para que hable
+# Para que hable
 from gtts import gTTS
+import os
+import playsound
 
-#Mi codigo
+# Configuración de la página
 st.set_page_config(page_title="Reconocimiento facial", page_icon="😎")
 st.markdown("# Reconocimiento facial")
 
-
-def on_publish(client,userdata,result):             #create function for callback
-    print("el dato ha sido publicado \n")
+def on_publish(client, userdata, result):  # create function for callback
+    print("El dato ha sido publicado\n")
     pass
 
 def on_message(client, userdata, message):
     global message_received
     time.sleep(2)
-    message_received=str(message.payload.decode("utf-8"))
+    message_received = str(message.payload.decode("utf-8"))
     st.write(message_received)
 
-        
-
-
-broker="broker.mqttdashboard.com"
-port=1883
-client1= paho.Client("CollabModeloCamara")
+broker = "broker.mqttdashboard.com"
+port = 1883
+client1 = paho.Client("CollabModeloCamara")
 client1.on_message = on_message
 client1.on_publish = on_publish
-client1.connect(broker,port)
+client1.connect(broker, port)
 
-#model = load_model("keras_model.h5")
+# Cargar el modelo
 model = load_model('keras_model.h5')
 data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
-
 img_file_buffer = st.camera_input("Toma una Foto")
 
+def play_audio(text):
+    tts = gTTS(text=text, lang='es')
+    tts.save("temp_audio.mp3")
+    playsound.playsound("temp_audio.mp3")
+    os.remove("temp_audio.mp3")
+
 if img_file_buffer is not None:
-    # To read image file buffer with OpenCV:
-    data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
-   #To read image file buffer as a PIL Image:
+    # Leer la imagen del buffer
     img = Image.open(img_file_buffer)
 
+    # Redimensionar la imagen
     newsize = (224, 224)
     img = img.resize(newsize)
-    # To convert PIL Image to numpy array:
     img_array = np.array(img)
 
-    # Normalize the image
+    # Normalizar la imagen
     normalized_image_array = (img_array.astype(np.float32) / 127.0) - 1
-    # Load the image into the array
     data[0] = normalized_image_array
 
-    # run the inference
+    # Ejecutar la inferencia
     prediction = model.predict(data)
     print(prediction)
-    if prediction[0][0]>0.3:
-      st.header('Te veo feliz 😁')
-      client1.publish("CanalAbreCierra","{'gesto': 'Feliz'}",qos=0, retain=False)
-      time.sleep(0.2)
-    if prediction[0][1]>0.3:
-      st.header('Te veo triste ☹')
-      client1.publish("CanalAbreCierra","{'gesto': 'Triste'}",qos=0, retain=False)
-      time.sleep(0.2)  
-  
-
+    if prediction[0][0] > 0.3:
+        st.header('Te veo feliz 😁')
+        client1.publish("CanalAbreCierra", "{'gesto': 'Feliz'}", qos=0, retain=False)
+        play_audio("¡Estoy feliz de verte sonreír!")
+    elif prediction[0][1] > 0.3:
+        st.header('Te veo triste ☹')
+        client1.publish("CanalAbreCierra", "{'gesto': 'Triste'}", qos=0, retain=False)
+        play_audio("Lamento verte triste, espero que te sientas mejor pronto.")
+    time.sleep(0.2)
