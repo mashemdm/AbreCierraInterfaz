@@ -41,7 +41,9 @@ def play_audio(text):
     tts = gTTS(text=text, lang='es')
     tts.save("temp_audio.mp3")
     try:
-        playsound.playsound("temp_audio.mp3")
+       # playsound.playsound("temp_audio.mp3")
+        playsound.playsound(os.path.abspath("temp_audio.mp3"))
+
     except Exception as e:
         print("Error al reproducir el audio:", e)
     finally:
