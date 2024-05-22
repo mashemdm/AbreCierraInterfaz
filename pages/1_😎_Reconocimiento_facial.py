@@ -86,12 +86,11 @@ if img_file_buffer is not None:
       st.header('Te veo triste ☹️')
       client1.publish("CanalAbreCierra","{'gesto': 'Triste'}",qos=0, retain=False)
       time.sleep(0.2)  
-        
-        result, output_text = text_to_speech(text, tld)
-        audio_file = open(f"temp/{result}.mp3", "rb")
-        audio_bytes = audio_file.read()
-        st.markdown(f"## Tú audio:")
-        st.audio(audio_bytes, format="audio/mp3", start_time=0)
+    result, output_text = text_to_speech(text, tld)
+    audio_file = open(f"temp/{result}.mp3", "rb")
+    audio_bytes = audio_file.read()
+    st.markdown(f"## Tú audio:")
+    st.audio(audio_bytes, format="audio/mp3", start_time=0)
 
 #Parte de hablar
 text = ("Me encanta verte feliz, cómo puedo ayudarte")
