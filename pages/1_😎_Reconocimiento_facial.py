@@ -37,7 +37,7 @@ data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
 img_file_buffer = st.camera_input("Toma una Foto")
 
-def play_audio("text"):
+def play_audio(text):
     tts = gTTS(text=text, lang='es')
     tts.save("temp_audio.mp3")
     try:
