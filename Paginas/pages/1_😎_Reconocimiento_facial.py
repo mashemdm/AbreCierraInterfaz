@@ -55,6 +55,9 @@ if img_file_buffer is not None:
 
     # run the inference
     prediction = model.predict(data)
+    except Exception as e:
+    st.error(f"Error al predecir: {str(e)}")
+    raise
     print(prediction)
     if prediction[0][0]>0.3:
       st.header('Abriendo')
