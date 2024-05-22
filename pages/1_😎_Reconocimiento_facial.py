@@ -14,11 +14,6 @@ import glob
 #Para que hable
 from gtts import gTTS
 
-if os.path.exists('keras_model.h5'):
-    print("The file 'keras_model.h5' exists in the current working directory.")
-else:
-    print("The file 'keras_model.h5' does not exist in the current working directory.")
-
 #Mi codigo
 st.set_page_config(page_title="Reconocimiento facial", page_icon="😎")
 st.markdown("# Reconocimiento facial")
