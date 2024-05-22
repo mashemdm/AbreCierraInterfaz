@@ -91,6 +91,8 @@ if img_file_buffer is not None:
     audio_bytes = audio_file.read()
     st.markdown(f"## Tú audio:")
     st.audio(audio_bytes, format="audio/mp3", start_time=0)
+    st.markdown(f"## Texto en audio:")
+    st.write(f" {output_text}")
 
 #Parte de hablar
 text = ("Me encanta verte feliz, cómo puedo ayudarte")
@@ -115,8 +117,8 @@ def text_to_speech(text, tld):
     st.audio(audio_bytes, format="audio/mp3", start_time=0)"""
 
     #if display_output_text:
-    st.markdown(f"## Texto en audio:")
-    st.write(f" {output_text}")
+    """st.markdown(f"## Texto en audio:")
+    st.write(f" {output_text}")"""
 
 
 def remove_files(n):
