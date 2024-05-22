@@ -41,29 +41,9 @@ model = load_model('keras_model.h5')
 data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
 img_file_buffer = st.camera_input("Toma una Foto")
-def text_to_speech(text, tld):
-    
-    tts = gTTS(text,"es", tld, slow=False)
-    try:
-        my_file_name = text[0:20]
-    except:
-        my_file_name = "audio"
-    tts.save(f"temp/{my_file_name}.mp3")
-    return my_file_name, text
     
 def play_audio(text):
-     result, output_text = text_to_speech(text, tld)
-    audio_file = open(f"temp/{result}.mp3", "rb")
-    audio_bytes = audio_file.read()
-    st.markdown(f"## Tú audio:")
-    st.audio(audio_bytes, format="audio/mp3", start_time=0)
-
-    #if display_output_text:
-    st.markdown(f"## Texto en audio:")
-    st.write(f" {output_text}")
-
-    
-   """ tts = gTTS(text=text, lang='es')
+   tts = gTTS(text=text, lang='es')
     tts.save("temp_audio.mp3")
     try:
        # playsound.playsound("temp_audio.mp3")
@@ -77,7 +57,7 @@ def play_audio(text):
             try:
                 os.remove("temp_audio.mp3")
             except Exception as e:
-                print("Error al eliminar el archivo de audio:", e) """
+                print("Error al eliminar el archivo de audio:", e) 
 
 if img_file_buffer is not None:
     # Leer la imagen del buffer
