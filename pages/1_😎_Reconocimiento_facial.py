@@ -67,7 +67,7 @@ if img_file_buffer is not None:
       client1.publish("CanalAbreCierra","{'gesto': 'Feliz'}",qos=0, retain=False)
       time.sleep(0.2)
     if prediction[0][1]>0.3:
-      st.header('Te veo triste ☹')
+      st.header('Te veo triste 😞')
       client1.publish("CanalAbreCierra","{'gesto': 'Triste'}",qos=0, retain=False)
       time.sleep(0.2)  
   
