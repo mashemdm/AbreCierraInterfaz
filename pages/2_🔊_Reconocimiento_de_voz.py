@@ -35,6 +35,10 @@ client2.on_publish = on_publish
 client2.connect(broker, port)
 client2.loop_start()
 
+image = Image.open('VOZ.jpg')
+
+st.image(image, width=200)
+
 st.write("Toca el Botón y dime cómo te sientes")
 
 stt_button = Button(label="Dame click", width=200)
