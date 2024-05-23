@@ -11,18 +11,13 @@ st.sidebar.success("Selecciona la opción de lectura.")
 
 st.markdown(
     """
-    Streamlit is an open-source app framework built specifically for
-    Machine Learning and Data Science projects.
-    **👈 Select a demo from the sidebar** to see some examples
-    of what Streamlit can do!
-    ### Want to learn more?
-    - Check out [streamlit.io](https://streamlit.io)
-    - Jump into our [documentation](https://docs.streamlit.io)
-    - Ask a question in our [community
-        forums](https://discuss.streamlit.io)
-    ### See more complex demos
-    - Use a neural net to [analyze the Udacity Self-driving Car Image
-        Dataset](https://github.com/streamlit/demo-self-driving)
-    - Explore a [New York City rideshare dataset](https://github.com/streamlit/demo-uber-nyc-pickups)
+    La aplicación "Lector de emociones" utiliza la cámara del dispositivo para detectar las emociones básicas (tristeza y felicidad) en el rostro del usuario.
+    A partir de este reconocimiento, un robot asociado imita la expresión facial detectada y enciende un foco de un color específico de acuerdo a la emoción.
+    **👈 Esccoge el metodo para reconocer tu emoción** 
+    ### Qué usos puede tener esta interfaz?
+    - **Autoevaluación emocional:** Permite a los usuarios monitorear sus propias emociones y desarrollar estrategias para gestionarlas de manera efectiva.
+    - **Fomentar la inteligencia emocional en niños:** Brinda una forma interactiva y divertida de aprender a reconocer y expresar emociones.
+    - **Evaluar la satisfacción del cliente:** Medir el nivel de satisfacción de los clientes en tiempo real y mejorar la calidad del servicio.
+
 """
 )
