@@ -12,6 +12,7 @@ st.sidebar.success("Selecciona la opción de lectura.")
 st.markdown(
     """
     La aplicación **"Lector de emociones"** utiliza la cámara del dispositivo para detectar las emociones básicas (tristeza y felicidad) en el rostro del usuario.
+    
     A partir de este reconocimiento, un robot asociado imita la expresión facial detectada y enciende un foco de un color específico de acuerdo a la emoción.
 
     
