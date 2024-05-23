@@ -76,7 +76,7 @@ if result:
         client1.connect(broker,port)  
         message =json.dumps({"gesto":result.get("GET_TEXT").strip()})
        # ret= client1.publish("Voice666", message)
-         ret= client1.publish("CanalAbreCierra", message)
+        ret= client1.publish("CanalAbreCierra", message)
 
     
     try:
