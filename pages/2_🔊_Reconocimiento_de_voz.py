@@ -40,9 +40,9 @@ client1.on_message = on_message
 
 st.write("Toca el Botón y dime cómo te sientes ")
 
-st_button = Button(label=" Dame click ", width=200)
+stt_button = Button(label=" Dame click ", width=200)
 
-st_button.js_on_event("button_click", CustomJS(code="""
+stt_button.js_on_event("button_click", CustomJS(code="""
     var recognition = new webkitSpeechRecognition();
     recognition.continuous = true;
     recognition.interimResults = true;
