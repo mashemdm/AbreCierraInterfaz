@@ -19,7 +19,9 @@ st.markdown(
     **👈 Esccoge el metodo para reconocer tu emoción** 
     ### Qué usos puede tener esta interfaz?
     - **Autoevaluación emocional:** Permite a los usuarios monitorear sus propias emociones y desarrollar estrategias para gestionarlas de manera efectiva.
+    
     - **Fomentar la inteligencia emocional en niños:** Brinda una forma interactiva y divertida de aprender a reconocer y expresar emociones.
+   
     - **Evaluar la satisfacción del cliente:** Medir el nivel de satisfacción de los clientes en tiempo real y mejorar la calidad del servicio.
 
 """
