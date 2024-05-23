@@ -1,5 +1,7 @@
 import os
 import streamlit as st
+from bokeh.models.widgets import Button
+from bokeh.models import CustomJS
 from streamlit_bokeh_events import streamlit_bokeh_events
 import time
 import paho.mqtt.client as paho
@@ -33,15 +35,11 @@ client2.on_publish = on_publish
 client2.connect(broker, port)
 client2.loop_start()
 
-st.write("Toca el botón y dime cómo te sientes")
+st.write("Toca el Botón y dime cómo te sientes")
 
-# Botón de Streamlit
-if st.button("Dame click"):
-    st.write("Reconocimiento de voz iniciado...")
+stt_button = Button(label="Dame click", width=200)
 
-    # Código JavaScript para el reconocimiento de voz
-    stt_js = """
-    <script>
+stt_button.js_on_event("button_click", CustomJS(code="""
     var recognition = new webkitSpeechRecognition();
     recognition.continuous = true;
     recognition.interimResults = true;
@@ -58,23 +56,27 @@ if st.button("Dame click"):
         }
     }
     recognition.start();
-    </script>
-    """
-    st.components.v1.html(stt_js)
+    """))
 
-    result = streamlit_bokeh_events(
-        events="GET_TEXT",
-        key="listen",
-        refresh_on_update=False,
-        override_height=75,
-        debounce_time=0
-    )
+result = streamlit_bokeh_events(
+    stt_button,
+    events="GET_TEXT",
+    key="listen",
+    refresh_on_update=False,
+    override_height=75,
+    debounce_time=0
+)
 
-    if result:
-        if "GET_TEXT" in result:
-            st.write(result.get("GET_TEXT"))
-            message = json.dumps({"gesto": result.get("GET_TEXT").strip()})
-            ret = client2.publish("CanalAbreCierra", message)
+if result:
+    if "GET_TEXT" in result:
+        st.write(result.get("GET_TEXT"))
+        message = json.dumps({"gesto": result.get("GET_TEXT").strip()})
+        ret = client2.publish("CanalAbreCierra", message)
+
+    try:
+        os.mkdir("temp")
+    except:
+        pass
 
 # Mantener la conexión MQTT activa
 client2.loop_stop()
