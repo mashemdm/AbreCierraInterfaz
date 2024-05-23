@@ -14,6 +14,7 @@ from gtts import gTTS
 #Mi codigo
 st.set_page_config(page_title="Reconocimiento facial", page_icon="😎")
 st.markdown("# Reconocimiento facial")
+st.sidebar.header("Reconocimiento facial")
 
 
 def on_publish(client,userdata,result):             #create function for callback
