@@ -85,5 +85,5 @@ if result:
         pass
 
 # Mantener la conexión MQTT activa
-client2.loop_stop()
-client2.disconnect()
+#client2.loop_stop()
+#client2.disconnect()
