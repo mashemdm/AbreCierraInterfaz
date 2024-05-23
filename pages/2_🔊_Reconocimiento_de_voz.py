@@ -42,7 +42,7 @@ st.image(image, width=200)
 
 st.write("Toca el Botón y dime cómo te sientes")
 
-stt_button = Button(label="Dame click", width=800)
+stt_button = Button(label="Dame click", width=500)
 #stt_button = st.button("Dame click")
 
 stt_button.js_on_event("button_click", CustomJS(code="""
