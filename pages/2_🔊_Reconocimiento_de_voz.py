@@ -37,7 +37,7 @@ client2.loop_start()
 
 st.write("Toca el Botón y dime cómo te sientes")
 
-stt_button = Button(label="Dame click", width=10)
+stt_button = Button(label="Dame click", width=1)
 #stt_button = st.button("Dame click")
 
 stt_button.js_on_event("button_click", CustomJS(code="""
